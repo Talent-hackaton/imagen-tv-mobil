@@ -18,16 +18,16 @@ const camposVacios = ()=>{
     }
 }
 const validarCorreo = ()=>{
-    let patronCorreo = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-    if (patronCorreo.test($correo.val())) {
-        return true;
-    } else {
+    
+    if ($correo.val().length == 0) {
         swal({
             title: "Error!",
             text: "Ingresa un correo valido!",
             type: "error",
             confirmButtonText: "OK"
         });
+    } else {
+        return true;
     }
 };
 const validarContrasenia = ()=>{
