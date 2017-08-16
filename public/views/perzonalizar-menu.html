@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Personalizar menú</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+<body>
+	<nav class="nav-extended black">
+			<div class="nav-wrapper black ">
+				<img class="logo" src="../img/ic_toolbar_imagen.png">
+				<a href="#" class="brand-logo">Perzonalizar menú</a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="#"><img src="../img/ic_menu_live.png"></a></li>
+				</ul>
+				<ul class="side-nav black" id="mobile-demo">
+					<div class="center">
+						<img src="../img/logo3.jpg">
+					</div>
+					<li><a class="white-text" href="#"><img src="../img/ic_menu_profile.png">Mis Datos </a></li>
+					<li><a class="white-text" href="canal.html"><img src="../img/ic_menu_my_list_light.png">Mi Lista</a></li>
+					<li class="row">
+						<a class="red white-text" href="#"><img src="../img/ic_menu_live_enable.png">Transmisión en vivo</a></li>
+					<li><a class="white-text" href="#">Inicio</a></li>
+					<li><a class="white-text" href="#">Noticias</a></li>
+					<li><a class="white-text" href="#">Teleseries</a></li>
+					<li><a class="white-text" href="#">Entretenimiento</a></li>
+					<li><a class="white-text" href="#">Deportes</a></li>
+					<li><a class="white-text" href="#">Nuestro Conductores</a></li>
+					<li><a class="white-text" href="#">Programación</a></li>
+					<li><a class="white-text" href="#">Notificaciones</a></li>
+					<li><a class="white-text" href="#">Personalizar Menú</a></li>
+					<li><a class="white-text" href="#">Información</a></li>
+					<li><a class="white-text" href="#">Aviso de privacidad</a></li>
+					<li><a class="white-text" href="#">Ayuda</a></li>
+					<li><a class="white-text" href="#">Cerrar Sesión</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container">
+			<p class="center">
+				Desliza la selección segun tu preferencia posicionándose en la textura del lado derecho y guarda tus opciones
+			</p>
+			<form class="personalizar">
+				<ul class="container">
+					<li class="row">
+						<div class="switch">
+						Restablecer
+							<label class="right">
+								<input type="checkbox">
+								<span class="lever"></span>
+							</label>
+						</div>
+					</li>
+					<li class="row">
+
+					</li>
+					<li class="row">
+						Noticias
+						<i class="right material-icons">menu</i>
+					</li>
+					<li class="row">
+						Teleseries
+						<i class="right material-icons">menu</i>
+
+					</li>
+					<li class="row">
+						Entretenimiento
+						<i class="right material-icons">menu</i>
+
+					</li>
+					<li class="row">
+						Deportes
+						<i class="right material-icons">menu</i>
+
+					</li>
+					<li class="row">
+						Nuestros conductores
+						<i class="right material-icons">menu</i>
+
+					</li>
+					<li class="row">
+						Programación
+						<i class="right material-icons">menu</i>
+					</li>
+				</ul>
+				<div class="center">
+					<button class="white-text" type="submit">Guardar</button>
+				</div>
+			</form>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+		<script type="text/javascript" src="../js/notificaciones.js"></script>
+</body>
+</html>
