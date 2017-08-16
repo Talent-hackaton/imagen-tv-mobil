@@ -191,6 +191,7 @@ var ingresoDeUsuario = function(responseAPI) {
         },
         success: function(response) {
             console.log("response",response)
+			localStorage.setItem('id', response.id);
             localStorage.setItem('token', response.api_key);
         },
         error : function(error ) {
