@@ -1,35 +1,29 @@
 var cargarPagina = function() {
     
     console.log(localStorage.getItem('token'))
-    accederLista()
+    accederAMiLista();
 }
 
-var accederLista = function() {
-    $.ajax({
-        url: 'http://imagentv.jediteam.mx/api/users/account',
-        type: 'GET',
-        dataType: 'json',
-         headers: {
-             'X-Authorization': localStorage.getItem('token'),
-        },
-        /*beforeSend: function (jqXHR) {
-        	var token = localStorage.token;
-        	console.log(token);
-        	jqXHR.setRequestHeader('X-authorization', token)
-        },*/
-        success: function(response, textStatus) {
-            console.log('succes', response)
-        },
-        error: function(error) {
-            console.log('error', error)
-        },
-        complete: function(jqxhr, textStatus) {
-            console.log(textStatus);
-            if(textStatus == 'error'){
-
-            }
-        }
-    })
+var accederAMiLista = function() {
+	$.ajax({
+		url: 'http://imagentv.jediteam.mx/api/users/bookmarks',
+		type: 'GET',
+		dataType: 'json',
+		timeout: 0,
+		data: {
+			'api_key': localStorage.token,
+		},
+		success: function(response) {
+			console.log("response",response)
+		},
+		error : function(error ) {
+			console.log(error)
+		},
+		complete: function(jqxhr, textStatus){
+			console.log('complete');
+		}
+	});
+    
 }
 
 $(document).ready(cargarPagina);

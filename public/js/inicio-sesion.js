@@ -21,35 +21,27 @@ const camposVacios = ()=>{
 }
 
 const validarCorreo = ()=>{
-	let patronCorreo = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-	if (patronCorreo.test($correo.val())) {
-		return true;
-	} else {
-		swal({
-			title: "Error!",
-			text: "Ingresa un correo valido!",
-			type: "error",
-			confirmButtonText: "OK"
-		});
-	}
+    if ($correo.val().length == 0) {
+        swal({
+            title: "Error!",
+            text: "Ingresa un correo valido!",
+            type: "error",
+            confirmButtonText: "OK"
+        });
+    } else {
+        return true;
+    }
 };
 
 const validarContrasenia = ()=>{
-	if($contrasenia.val().length > 6){
-		swal({
-			title: "Error!",
-			text: "Recuerda que debes ingresar un password de 6 dígitos!",
-			type: "error",
-			confirmButtonText: "Cool"
-		});
-	} else if ($contrasenia.val().length < 6){
-		swal({
-			title: "Error!",
-			text: "Recuerda que debes ingresar un password de 6 dígitos!",
-			type: "error",
-			confirmButtonText: "OK"
-		});
-	} else if($contrasenia.val().length == 6){ return true};
+    if($contrasenia.val().length = 0){
+        swal({
+            title: "Error!",
+            text: "Recuerda que debes ingresar al menos un carácter",
+            type: "error",
+            confirmButtonText: "Cool"
+        });
+    } else { return true};
 }
 
 const validarCampos = (e)=>{
@@ -132,25 +124,40 @@ var registroUsuarioApi = function(responseAPI){
 };
 
 var ingresoDeUsuario = function(responseAPI) {
-	console.log(responseAPI);
-	$.ajax({
-		url:'http://www.imagentv.jediteam.mx/api/users/login',
-		type: 'POST',
-		data: {
-			type: responseAPI.type,
-			email: responseAPI.email,
-		}, 
-		success: function(res){
-			console.log(res)
-		}, error: function(error){
-			console.log(error)
-		}
-	})
-
-}
-
-
-
+    $.ajax({
+        url: 'http://imagentv.jediteam.mx/api/users/login',
+        type: 'POST',
+        dataType: 'json',
+        timeout: 0,
+        data: {
+            "type": responseAPI.type,
+            "email": responseAPI.email,
+        },
+        success: function(response) {
+            console.log("response",response)
+			localStorage.setItem('id', response.id);
+            localStorage.setItem('token', response.api_key);
+        },
+        error : function(error ) {
+            console.log(error)
+        },
+        complete: function(jqxhr, textStatus){
+            if(textStatus == "error"){
+                registroUsuarioApi(responseAPI);
+            } else {
+                swal({
+                    title: "Bienvenid@!",
+                    text: responseAPI.name,
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+                setTimeout(function(){
+                    location.href = "canal.html";
+                }, 2100);
+            }
+        }
+    })
+};
 var botonFb = document.querySelector('.facebook');
 var botonTwitter = document.querySelector('.twitter');
 var botonGoogle = document.querySelector('.google');
