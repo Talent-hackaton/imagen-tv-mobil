@@ -5,7 +5,7 @@ var plantilla = '<li class="collection-item">'+
                         '</div>'+
                         '<div class="col s10">'+
                             '<span>**programa**</span>'+
-                            '<a href="#!" class="secondary-content"><i class="material-icons">send</i></a>'+
+                            '<a href="#!" class="secondary-content detallevideo" data="**idvideo**"><i class="material-icons">send</i></a>'+
                        ' </div>'+
                     '</div>'+
                 '</li>';
@@ -13,7 +13,9 @@ var plantilla = '<li class="collection-item">'+
 var cargarPagina = function() {
     console.log(dir.url)
     programacionHoy();
+    
 }
+
 
 var obtenerFecha = function(){
 
@@ -48,11 +50,11 @@ var obtenerHoraActual = function(){
     return horaActual;
 }
 
-var dir = {url: 'http://imagentv.jediteam.mx/api/application/escaleta/filter?date='+obtenerFecha()+' '+obtenerHoraActual()}
+var dir = {url: 'http://imagentv.jediteam.mx/api/application/escaleta/filter?date='}
 var programacionHoy = function() {
 
     $.ajax({
-        url: dir.url,
+        url: dir.url+obtenerFecha()+' '+obtenerHoraActual(),
         type: 'GET',
         dataType: 'json',
         timeout: 0,
@@ -71,16 +73,29 @@ var programacionHoy = function() {
     })
 }
 
+var programacionMartes = function(){
+
+}
+
 var obtenerDataProgramas = function(response){
-    //console.log(response);
+    console.log(response);
     var programas = response.schedules;
     var plantillaFinal = "";
+    var idVideo = 0;
+    console.log(response)
     console.log(programas);
     programas.forEach(function(programa){
             plantillaFinal += plantilla.replace('**hora**', programa.hour)
-                                        .replace('**programa**', programa.program);
+                                        .replace('**programa**', programa.program)
+                                        .replace('**idvideo**', programa.id);
+
+    $('#cont-mie').html(plantillaFinal);
+    $('.detallevideo').click(function(e){
+              localStorage.setItem('idVideo',$(this).attr('data'))
+              console.log(localStorage.idVideo)
+               setTimeout(function(){location.href="detalle-video.html"}, 3000)
+            })
         })
-    $('#lista-programas').html(plantillaFinal);
 }
 
 $(document).ready(cargarPagina);
