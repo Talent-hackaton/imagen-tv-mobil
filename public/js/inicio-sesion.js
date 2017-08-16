@@ -31,21 +31,14 @@ const validarCorreo = ()=>{
     }
 };
 const validarContrasenia = ()=>{
-    if($contrasenia.val().length > 6){
+    if($contrasenia.val().length = 0){
         swal({
             title: "Error!",
-            text: "Recuerda que debes ingresar un password de 6 dígitos!",
+            text: "Recuerda que debes ingresar al menos un carácter",
             type: "error",
             confirmButtonText: "Cool"
         });
-    } else if ($contrasenia.val().length < 6){
-        swal({
-            title: "Error!",
-            text: "Recuerda que debes ingresar un password de 6 dígitos!",
-            type: "error",
-            confirmButtonText: "OK"
-        });
-    } else if($contrasenia.val().length == 6){ return true};
+    } else { return true};
 }
 const validarCampos = (e)=>{
     e.preventDefault();
