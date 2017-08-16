@@ -101,10 +101,6 @@ var entrar = function(proveedor){
 
 		ingresoDeUsuario(responseAPI);
 	})
-		.then(function() {
-
-		location.href = 'bienvenida.html';
-	})
 		.catch(function(error) {
 		var errorCode = error.code;
 		var errorMessage = error.message;
