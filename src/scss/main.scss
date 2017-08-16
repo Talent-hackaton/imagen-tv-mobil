@@ -7,9 +7,12 @@ $colormoradoc:#451e36;
 $colorblanco: #ffffff;
 
 nav{
-	.brand-logo{
-		height: 50px;
-	}
+    .brand-logo{
+        height: 50px;
+    }
+    .logo{
+        height: 40px;
+    }
 }
 
 .side-nav{
@@ -30,7 +33,7 @@ nav{
 }
 
 .splash {
-  margin-top: 33%; }
+  margin-top: 50%; }
 
 img.responsive-img.img-intro {
   width: 20vh;
@@ -46,4 +49,26 @@ img.responsive-img.img-intro {
 }
 #nombre-usuario-bienvenido, #lista-usuario-bienvenido, #menu-usuario-bienvenido{
 	margin-top: 5vh;
+}
+img.logo_imagen_grande{
+	height: 50vh;
+}
+.texto-alineado-der{
+	text-align: right;
+}
+#justificado{
+	text-align: justify;
+}
+
+.personalizar{
+    li{
+        border-bottom: 1px solid black;
+    }
+    button{
+        background-color: red;
+        border-radius: 5px;
+        width: 60%;
+        height: 40px;
+        border: none;
+    }
 }

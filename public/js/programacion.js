@@ -5,14 +5,178 @@ var plantilla = '<li class="collection-item">'+
                         '</div>'+
                         '<div class="col s10">'+
                             '<span>**programa**</span>'+
-                            '<a href="#!" class="secondary-content"><i class="material-icons">send</i></a>'+
+                            '<a href="#!" class="secondary-content detallevideo" data="**idvideo**"><i class="material-icons">send</i></a>'+
                        ' </div>'+
                     '</div>'+
                 '</li>';
 
+var fechas = {
+    jueves: "2017-08-17 08:00",
+    viernes: "2017-08-18 08:00",
+    sabado: "2017-08-19 08:00",
+    domingo: "2017-08-20 08:00"
+}
+
+
 var cargarPagina = function() {
     console.log(dir.url)
     programacionHoy();
+    cargarJueves();
+    cargarViernes();
+    cargarSabado();
+    cargarDomingo();
+}
+var cargarJueves = function(){
+
+    $.ajax({
+        url: dir.url+fechas.jueves,
+        type: 'GET',
+        dataType: 'json',
+        timeout: 0,
+        success: function(response, textStatus) {
+            var programas = response.schedules;
+            var plantillaFinal = "";
+            var idVideo = 0;
+            console.log(response)
+            console.log(programas);
+            programas.forEach(function(programa){
+                    plantillaFinal += plantilla.replace('**hora**', programa.hour)
+                                                .replace('**programa**', programa.program)
+                                                .replace('**idvideo**', programa.id);
+
+            $('#cont-jue').html(plantillaFinal);
+            $('.detallevideo').click(function(e){
+                      localStorage.setItem('idVideo',$(this).attr('data'))
+                      console.log(localStorage.idVideo)
+                       setTimeout(function(){location.href="detalle-video.html"}, 3000)
+                    })
+                })
+        },
+        error: function(error) {
+            console.log(error)
+        },
+        complete: function(jqxhr, textStatus) {
+            console.log(textStatus);
+            if(textStatus == 'succes'){
+                alert("Ya puedes ver la programacionHoy")
+            }
+        }
+    })
+
+}
+
+var cargarViernes = function(){
+    $.ajax({
+        url: dir.url+fechas.viernes,
+        type: 'GET',
+        dataType: 'json',
+        timeout: 0,
+        success: function(response, textStatus) {
+            var programas = response.schedules;
+            var plantillaFinal = "";
+            var idVideo = 0;
+            console.log(response)
+            console.log(programas);
+            programas.forEach(function(programa){
+                    plantillaFinal += plantilla.replace('**hora**', programa.hour)
+                                                .replace('**programa**', programa.program)
+                                                .replace('**idvideo**', programa.id);
+
+            $('#cont-vie').html(plantillaFinal);
+            $('.detallevideo').click(function(e){
+                      localStorage.setItem('idVideo',$(this).attr('data'))
+                      console.log(localStorage.idVideo)
+                       setTimeout(function(){location.href="detalle-video.html"}, 3000)
+                    })
+                })
+        },
+        error: function(error) {
+            console.log(error)
+        },
+        complete: function(jqxhr, textStatus) {
+            console.log(textStatus);
+            if(textStatus == 'succes'){
+                alert("Ya puedes ver la programacionHoy")
+            }
+        }
+    })
+}
+
+var cargarSabado = function(){
+    $.ajax({
+        url: dir.url+fechas.sabado,
+        type: 'GET',
+        dataType: 'json',
+        timeout: 0,
+        success: function(response, textStatus) {
+            var programas = response.schedules;
+            var plantillaFinal = "";
+            var idVideo = 0;
+            console.log(response)
+            console.log(programas);
+            programas.forEach(function(programa){
+                    plantillaFinal += plantilla.replace('**hora**', programa.hour)
+                                                .replace('**programa**', programa.program)
+                                                .replace('**idvideo**', programa.id);
+
+            $('#cont-sab').html(plantillaFinal);
+            $('.detallevideo').click(function(e){
+                      localStorage.setItem('idVideo',$(this).attr('data'))
+                      console.log(localStorage.idVideo)
+                       setTimeout(function(){location.href="detalle-video.html"}, 3000)
+                    })
+                })
+        },
+        error: function(error) {
+            console.log(error)
+        },
+        complete: function(jqxhr, textStatus) {
+            console.log(textStatus);
+            if(textStatus == 'succes'){
+                alert("Ya puedes ver la programacionHoy")
+            }
+        }
+    })
+}
+
+var cargarDomingo= function(){
+
+    $.ajax({
+        url: dir.url+fechas.domingo,
+        type: 'GET',
+        dataType: 'json',
+        timeout: 0,
+        success: function(response, textStatus) {
+            var programas = response.schedules;
+            var plantillaFinal = "";
+            var idVideo = 0;
+            console.log(response)
+            console.log(programas);
+            programas.forEach(function(programa){
+                    plantillaFinal += plantilla.replace('**hora**', programa.hour)
+                                                .replace('**programa**', programa.program)
+                                                .replace('**idvideo**', programa.id);
+
+            $('#cont-dom').html(plantillaFinal);
+            $('.detallevideo').click(function(e){
+                      localStorage.setItem('idVideo',$(this).attr('data'))
+                      console.log(localStorage.idVideo)
+                       setTimeout(function(){location.href="detalle-video.html"}, 3000)
+                    })
+                })
+        },
+        error: function(error) {
+            console.log(error)
+        },
+        complete: function(jqxhr, textStatus) {
+            console.log(textStatus);
+            if(textStatus == 'succes'){
+                alert("Ya puedes ver la programacionHoy")
+            }
+        }
+    })
+
+
 }
 
 var obtenerFecha = function(){
@@ -48,11 +212,11 @@ var obtenerHoraActual = function(){
     return horaActual;
 }
 
-var dir = {url: 'http://imagentv.jediteam.mx/api/application/escaleta/filter?date='+obtenerFecha()+' '+obtenerHoraActual()}
+var dir = {url: 'http://imagentv.jediteam.mx/api/application/escaleta/filter?date='}
 var programacionHoy = function() {
 
     $.ajax({
-        url: dir.url,
+        url: dir.url+obtenerFecha()+' '+obtenerHoraActual(),
         type: 'GET',
         dataType: 'json',
         timeout: 0,
@@ -71,16 +235,26 @@ var programacionHoy = function() {
     })
 }
 
+
 var obtenerDataProgramas = function(response){
-    //console.log(response);
+    console.log(response);
     var programas = response.schedules;
     var plantillaFinal = "";
+    var idVideo = 0;
+    console.log(response)
     console.log(programas);
     programas.forEach(function(programa){
             plantillaFinal += plantilla.replace('**hora**', programa.hour)
-                                        .replace('**programa**', programa.program);
+                                        .replace('**programa**', programa.program)
+                                        .replace('**idvideo**', programa.id);
+
+    $('#cont-mie').html(plantillaFinal);
+    $('.detallevideo').click(function(e){
+              localStorage.setItem('idVideo',$(this).attr('data'))
+              console.log(localStorage.idVideo)
+               setTimeout(function(){location.href="detalle-video.html"}, 3000)
+            })
         })
-    $('#lista-programas').html(plantillaFinal);
 }
 
 $(document).ready(cargarPagina);

@@ -12,11 +12,11 @@ gulp.task("cargarINDEX",()=>{
 		.pipe(gulp.dest('public'));
 });
 
-gulp.task('cargarJS', () =>{
+/*gulp.task('cargarJS', () =>{
 	gulp.src('./src/' + 'js/*.js')
 		.pipe(gulp.dest('public/js'));
 });
+*/
 
 
-
-gulp.task('default', ['sass', 'cargarINDEX', 'cargarJS' ]);
+gulp.task('default', ['sass', 'cargarINDEX' ]);

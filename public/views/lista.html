@@ -7,38 +7,51 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="./main.css">
+		<link rel="stylesheet" type="text/css" href="../css/main.css">
 	</head>
 
 	<body>
 
-		<header class="blue">
+		<nav class="nav-extended black">
+			<div class="nav-wrapper black ">
+				<a href="#" class="brand-logo"><img  src="../img/logo3.jpg" alt="logo"></a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="#"><img  src="../img/ic_menu_live.png"></a></li>
+					<li><a href="#"><img  src="../img/ic_search.png"></a></li>
+				</ul>
+				<ul class="side-nav black" id="mobile-demo">
+					<div class="center">
+						<img src="../img/logo3.jpg">
+					</div>
+					<li><a class="white-text" href="#"><img src="../img/ic_menu_profile.png">Mis Datos </a></li>
+					<li><a class="white-text" href="lista.html"><img src="../img/ic_menu_my_list_light.png">Mi Lista</a></li>
+					<li class="row">
+						<a class="red white-text" href="#"><img src="../img/ic_menu_live_enable.png">Transmisión en vivo</a></li>
+					<li><a class="white-text" href="#">Inicio</a></li>
+					<li><a class="white-text" href="#">Noticias</a></li>
+					<li><a class="white-text" href="#">Teleseries</a></li>
+					<li><a class="white-text" href="#">Entretenimiento</a></li>
+					<li><a class="white-text" href="#">Deportes</a></li>
+					<li><a class="white-text" href="#">Nuestro Conductores</a></li>
+					<li><a class="white-text" href="#">Programación</a></li>
+					<li><a class="white-text" href="#">Notificaciones</a></li>
+					<li><a class="white-text" href="#">Personalizar Menú</a></li>
+					<li><a class="white-text" href="informacion.html">Información</a></li>
+					<li><a class="white-text" href="aviso-privacidad.html">Aviso de privacidad</a></li>
+					<li><a class="white-text" href="#">Ayuda</a></li>
+					<li><a class="white-text" href="#">Cerrar Sesión</a></li>
+				</ul>
+			</div>
+		</nav>
 
-			<nav class="nav-extended black">
-				<div class="nav-wrapper ">
-					<a href="#" class="brand-logo "><img  src="../../public/img/logo3.jpg" alt=""></a>
-					<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-					<ul id="nav-mobile" class="right hide-on-med-and-down">
-						<li><a href="#"><img  src="img/vivo.png"></a></li>
-						<li><a href="#"><img  src="img/lupa.png"></a></li>
-					</ul>
-					<ul class="side-nav" id="mobile-demo">
-						<li><a href="#">Mi cuenta</a></li>
-						<li><a href="canal.html">Mi canal</a></li>
-						<li><a href="#">Transmisión en vivo</a></li>
-						<li><a href="#">Categorías</a></li>
-						<li><a href="#">Cerrar Sesión</a></li>
-					</ul>
-				</div>
-			</nav>
-		</header>
-		
+
 		<section id="Failed">
 			<p class="center"><i class="fa fa-pencil-square-o fa-5x" aria-hidden="true"></i></p>
 			<p class="center">Aún no tienes contenido guardado.</p>
 			<p class="center">Agrega contenido para visualizarlos aquí..</p>
 		</section>
-		
+
 		<script src="https://use.fontawesome.com/75919d6994.js"></script>
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
