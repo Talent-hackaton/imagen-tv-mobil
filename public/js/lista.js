@@ -1,5 +1,5 @@
 var cargarPagina = function() {
-    
+    $(".button-collapse").sideNav();
     console.log(localStorage.getItem('token'))
     accederAMiLista();
 }
