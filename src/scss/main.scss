@@ -7,9 +7,12 @@ $colormoradoc:#451e36;
 $colorblanco: #ffffff;
 
 nav{
-	.brand-logo{
-		height: 50px;
-	}
+    .brand-logo{
+        height: 50px;
+    }
+    .logo{
+        height: 40px;
+    }
 }
 
 .side-nav{
@@ -55,4 +58,17 @@ img.logo_imagen_grande{
 }
 #justificado{
 	text-align: justify;
+}
+
+.personalizar{
+    li{
+        border-bottom: 1px solid black;
+    }
+    button{
+        background-color: red;
+        border-radius: 5px;
+        width: 60%;
+        height: 40px;
+        border: none;
+    }
 }
